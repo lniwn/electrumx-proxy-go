@@ -12,7 +12,7 @@ services:
     working_dir: /data
 
   electrumx:
-    image: lucky2077/atomicals-electrumx:v1.3.7.5
+    image: docker.io/lucky2077/atomicals-electrumx:v1.3.7.5
     restart: always
     healthcheck:
       test: "nc -z localhost 50001"

@@ -12,4 +12,4 @@ FROM scratch AS prod
 WORKDIR /app
 
 COPY --from=0 /build/electrumx-proxy-go ./
-ENTRYPOINT ["/electrumx-proxy-go"]
+ENTRYPOINT ["./electrumx-proxy-go"]
