@@ -1,0 +1,30 @@
+version: '3'
+services:
+  proxy:
+    image: quay.io/rhoninx/electrumx-proxy-go:latest
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - electrumx
+    volumes:
+      - ./proxy-data:/data
+    working_dir: /data
+
+  electrumx:
+    image: lucky2077/atomicals-electrumx:v1.3.7.5
+    restart: always
+    healthcheck:
+      test: "nc -z localhost 50001"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    volumes:
+      - ./electrumx-data:/data
+    environment:
+      - DAEMON_URL=nextdao:nextdao@${IP:?}:8332
+      - COIN=BitCoin
+      - PEER_DISCOVERY=off
+      - PEER_ANNOUNCE=""
+      - MAX_SEND=3000000
