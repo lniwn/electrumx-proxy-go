@@ -7,9 +7,10 @@ services:
       - 8080:8080
     depends_on:
       - electrumx
+    environment:
+      - CONFIG_FILE_DIR=/data
     volumes:
       - ./proxy-data:/data
-    working_dir: /data
 
   electrumx:
     image: docker.io/lucky2077/atomicals-electrumx:v1.3.7.5

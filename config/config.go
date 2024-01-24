@@ -15,7 +15,7 @@ type Config struct {
 var Conf Config
 
 func InitConf() {
-	if _, err := toml.DecodeFile(path.Join(os.Getenv("CONFIG_FILE_PATH"), "config.toml"), &Conf); err != nil {
+	if _, err := toml.DecodeFile(path.Join(os.Getenv("CONFIG_FILE_DIR"), "config.toml"), &Conf); err != nil {
 		log.Fatal(err)
 	}
 }
